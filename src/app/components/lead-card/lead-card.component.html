@@ -66,7 +66,7 @@
         Quartos:
         <span class="card__text">{{data.rooms}}</span>
       </h3>
-      <h3>
+      <h3 *ngIf="!data">
         Valor:
         <span class="lead__price"> R$ {{data.price}}</span>
       </h3>
