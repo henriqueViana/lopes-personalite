@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Lead } from 'src/app/models/lead.model';
+import { UserService } from '../../../services/user/user.service'
+import { LeadsService } from '../../../services/leads/leads.service'
+import { LoadingService } from '../../../helpers/loading/loading.service'
+import { AlertService } from '../../../helpers/alert/alert.service'
 
 @Component({
   selector: 'app-my-leads',
@@ -7,33 +11,29 @@ import { Lead } from 'src/app/models/lead.model';
   styleUrls: ['./my-leads.page.scss'],
 })
 export class MyLeadsPage implements OnInit {
-  leadList: Lead[] = [
-    {
-      area: '90m²',
-      location: 'Rio de Janeiro',
-      name: 'Thiago Melin',
-      price: 50.0,
-      realStateType: 'house',
-      rooms: 4,
-    },
-    {
-      area: '172m²',
-      location: 'Rio de Janeiro',
-      name: 'Pedro Cacique',
-      price: 170.0,
-      realStateType: 'house',
-      rooms: 3,
-    },
-    {
-      area: '87m²',
-      location: 'São Paulo',
-      name: 'Henrique Fritador',
-      price: 70.0,
-      realStateType: 'apt',
-      rooms: 2,
-    },
-  ];
-  constructor() {}
+  public user
 
-  ngOnInit() {}
+  leadList: Lead[] = []
+  constructor(
+    private userService: UserService,
+    private leadsService: LeadsService,
+    private loadingService: LoadingService,
+    private alertService: AlertService
+  ) {}
+
+  ngOnInit() {
+    this.loadingService.present()
+
+    const { id } = this.userService.getUser()
+
+    this.leadsService.getLeadsById(id)
+      .subscribe(res => {
+        this.loadingService.dismiss()
+        this.leadList = res.data as Lead[] 
+      }, err => {
+        this.loadingService.dismiss()
+        this.alertService.alert('Erro', 'Erro ao buscar os leads, tente novamente mais tarde')
+        console.log(err)
+      })
+  }
 }

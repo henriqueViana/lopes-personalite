@@ -1,14 +1,5 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>LOGIN</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
+<ion-content class="page-signin">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
     <ion-item>
       <ion-label>Login</ion-label>
       <ion-input type="text" formControlName="login" name="login"></ion-input>
@@ -17,9 +8,11 @@
       <ion-label>Senha</ion-label>
       <ion-input type="password" formControlName="senha" name="senha"></ion-input>
     </ion-item>
-    <ion-button expand="block" type="submit" block>Logar</ion-button>
-    <ion-button expand="block" block (click)="cadastrar()">Cadastrar</ion-button>
-
+    <div class="box-buttons">
+      <ion-button class="button" color="danger" expand="block" type="submit" block>Login</ion-button>
+      <div class="divisor">Ainda não possuo uma conta!</div>
+      <ion-button class="button" color="danger" expand="block" block (click)="cadastrar()">Cadastre-se</ion-button>
+    </div>
   </form>
 
 </ion-content>

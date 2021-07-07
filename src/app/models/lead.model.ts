@@ -1,8 +1,10 @@
 export class Lead {
-  location: string;
-  name: string;
-  area: string;
-  rooms: number;
-  price: number;
-  realStateType: string;
+  id: number
+  nome: string
+  telefone: string
+  email: string
+  tipoImovel: string
+  qtdQuartos: string
+  areaImovel: string
+  endereco: string
 }

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ISignupResponse } from 'src/app/interfaces/ISignupResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class SignupService {
   
   constructor(private http: HttpClient) { }
 
-  public signup(body) {
-    return this.http.post(this.url, body)
+  public signup(body): Observable<ISignupResponse> {
+    return this.http.post<ISignupResponse>(this.url, body)
   }
 }

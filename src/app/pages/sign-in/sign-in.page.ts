@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login/login.service'
 import { UserService } from '../../services/user/user.service'
+import { LoadingService } from '../../helpers/loading/loading.service'
+import { AlertService } from '../../helpers/alert/alert.service'
 
 @Component({
   selector: 'app-sign-in',
@@ -18,6 +20,8 @@ export class SignInPage implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private userService: UserService,
+    private loadingService: LoadingService,
+    private alertService: AlertService
   ) { 
     this.loginForm = this.formBuilder.group({
       login: ['', [Validators.required]],
@@ -29,10 +33,18 @@ export class SignInPage implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.loginForm.value).subscribe(res => { 
-      this.userService.setUser(res)
-      this.router.navigate(['/lead-tabs'])
-    })
+    this.loadingService.present()
+
+    this.loginService.login(this.loginForm.value)
+      .subscribe(res => { 
+        this.loadingService.dismiss()
+        this.userService.setUser(res.data)
+        this.router.navigate(['/lead-tabs'])
+      }, err => {
+        this.loadingService.dismiss()
+        this.alertService.alert('Login Inválido', 'Usuário e/ou senha incorretos')
+        console.log(err)
+      })
   }
 
   cadastrar() {

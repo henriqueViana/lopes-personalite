@@ -51,24 +51,24 @@
     <ion-label *ngIf="data">
       <h3>
         Local:
-        <span class="card__text">{{data.location}}</span>
+        <span class="card__text">{{data.endereco}}</span>
       </h3>
       <h3>
         Nome:
-        <span class="card__text">{{data.name}}</span>
+        <span class="card__text">{{data.nome}}</span>
       </h3>
 
       <h3>
         Área:
-        <span class="card__text">{{data.area}}</span>
+        <span class="card__text">{{data.areaImovel}}</span>
       </h3>
       <h3>
         Quartos:
-        <span class="card__text">{{data.rooms}}</span>
+        <span class="card__text">{{data.qtdQuartos}}</span>
       </h3>
       <h3 *ngIf="!data">
         Valor:
-        <span class="lead__price"> R$ {{data.price}}</span>
+        <span class="lead__price"> R$ {{data?.price}}</span>
       </h3>
     </ion-label>
   </ion-item>

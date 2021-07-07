@@ -11,5 +11,6 @@ export class LeadCardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }
