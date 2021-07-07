@@ -18,11 +18,8 @@ const routes: Routes = [
       import('./pages/sign-up/sign-up.module').then((m) => m.SignUpPageModule),
   },
   {
-    path: 'lead-list',
-    loadChildren: () =>
-      import('./pages/lead-list/lead-list.module').then(
-        (m) => m.LeadListPageModule
-      ),
+    path: 'lead-tabs',
+    loadChildren: () => import('./pages/lead-tabs/lead-tabs.module').then( m => m.LeadTabsPageModule)
   },
 ];
 @NgModule({

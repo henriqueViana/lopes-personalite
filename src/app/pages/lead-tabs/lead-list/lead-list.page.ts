@@ -12,4 +12,8 @@ export class LeadListPage implements OnInit {
   ngOnInit() {
   }
 
+  unread(item) {
+    console.log('item----', item);
+  }
+
 }

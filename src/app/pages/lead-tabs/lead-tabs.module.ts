@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LeadListPageRoutingModule } from './lead-list-routing.module';
+import { LeadTabsPageRoutingModule } from './lead-tabs-routing.module';
 
-import { LeadListPage } from './lead-list.page';
+import { LeadTabsPage } from './lead-tabs.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LeadListPageRoutingModule
+    LeadTabsPageRoutingModule
   ],
-  declarations: [LeadListPage]
+  declarations: [LeadTabsPage]
 })
-export class LeadListPageModule {}
+export class LeadTabsPageModule {}
