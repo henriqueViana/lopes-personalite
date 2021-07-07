@@ -27,7 +27,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Telefone</ion-label>
-      <ion-input type="text" formControlName="telefone" name="telefone"></ion-input>
+      <ion-input type="text" [brmasker]="{phone: true}" formControlName="telefone" name="telefone"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Área de Atendimento</ion-label>
@@ -43,6 +43,6 @@
         <ion-select-option value="Apartamento">Apartamento</ion-select-option>
       </ion-select>
     </ion-item>
-    <button ion-button type="submit" block>Cadastrar</button>
+    <ion-button expand="block"  type="submit" block>Cadastrar</ion-button>
   </form>
 </ion-content>
