@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "lopes-personalite",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
