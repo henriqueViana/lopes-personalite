@@ -19,7 +19,10 @@ const routes: Routes = [
   },
   {
     path: 'lead-tabs',
-    loadChildren: () => import('./pages/lead-tabs/lead-tabs.module').then( m => m.LeadTabsPageModule)
+    loadChildren: () =>
+      import('./pages/lead-tabs/lead-tabs.module').then(
+        (m) => m.LeadTabsPageModule
+      ),
   },
 ];
 @NgModule({
