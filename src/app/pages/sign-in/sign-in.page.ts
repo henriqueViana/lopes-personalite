@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from '../../services/login/login.service'
+import { UserService } from '../../services/user/user.service'
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +15,9 @@ export class SignInPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private router: Router,
+    private loginService: LoginService,
+    private userService: UserService,
   ) { 
     this.loginForm = this.formBuilder.group({
       login: ['', [Validators.required]],
@@ -25,7 +29,14 @@ export class SignInPage implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.loginForm.value).subscribe(res => console.log(res))
+    this.loginService.login(this.loginForm.value).subscribe(res => { 
+      this.userService.setUser(res)
+      this.router.navigate(['/lead-tabs'])
+    })
+  }
+
+  cadastrar() {
+    this.router.navigate(['/sign-up'])
   }
 
 }

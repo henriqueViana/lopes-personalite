@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user/user.service'
 
 @Component({
   selector: 'app-lead-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeadListPage implements OnInit {
 
-  constructor() { }
+  public user
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    // caso precise do usuário papa alguma coisa
+    this.user = this.userService.getUser()
   }
 
   unread(item) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SignupService } from '../../services/signup/signup.service'
 
 @Component({
@@ -13,6 +14,7 @@ export class SignUpPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     private signupService: SignupService
   ) { 
     this.signupForm = this.formBuilder.group({
@@ -31,7 +33,10 @@ export class SignUpPage implements OnInit {
 
   signup() {
     console.log(this.signupForm)
-    this.signupService.signup(this.signupForm.value).subscribe(res => console.log(res))
+    this.signupService.signup(this.signupForm.value).subscribe(res => { 
+      console.log(res)
+      this.router.navigate(['/lead-tabs'])
+    })
   }
 
 }
