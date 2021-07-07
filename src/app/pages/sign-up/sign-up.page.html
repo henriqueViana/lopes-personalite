@@ -7,4 +7,42 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content> 
+  <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input type="text" formControlName="nome" name="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" formControlName="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Login</ion-label>
+      <ion-input type="text" formControlName="login" name="login"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input type="password" formControlName="senha" name="senha"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Telefone</ion-label>
+      <ion-input type="text" formControlName="telefone" name="telefone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Área de Atendimento</ion-label>
+      <ion-select placeholder="Selecione" formControlName="areaAtendimento" name="areaAtendimento" multiple="true">
+        <ion-select-option value="RJ">Rio de Janeiro</ion-select-option>
+        <ion-select-option value="SP">São Paulo</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tipo de Imóvel</ion-label>
+      <ion-select placeholder="Selecione" formControlName="tipoImovel" name="tipoImovel" multiple="true">
+        <ion-select-option value="Casa">Casa</ion-select-option>
+        <ion-select-option value="Apartamento">Apartamento</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button type="submit" block>Cadastrar</button>
+  </form>
+</ion-content>

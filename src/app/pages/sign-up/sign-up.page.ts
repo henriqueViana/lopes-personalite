@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SignupService } from '../../services/signup/signup.service'
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpPage implements OnInit {
 
-  constructor() { }
+  private signupForm: FormGroup
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private signupService: SignupService
+  ) { 
+    this.signupForm = this.formBuilder.group({
+      login: ['', [Validators.required]],
+      senha: ['', [Validators.required]],
+      nome: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      telefone: ['', [Validators.required]],
+      areaAtendimento: ['', [Validators.required]],
+      tipoImovel: ['', [Validators.required]],
+    })
+  }
 
   ngOnInit() {
+  }
+
+  signup() {
+    console.log(this.signupForm)
+    this.signupService.signup(this.signupForm.value).subscribe(res => console.log(res))
   }
 
 }
