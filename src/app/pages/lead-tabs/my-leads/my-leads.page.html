@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-toolbar>
+    <img src="assets/images/lopes-personnalite-logo.png" class="ion-padding" />
+  </ion-toolbar>
+  <ion-list>
+    <ng-container *ngFor="let lead of leadList">
+      <app-lead-card [data]="lead"></app-lead-card>
+    </ng-container>
+  </ion-list>
+</ion-content>

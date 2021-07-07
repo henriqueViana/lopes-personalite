@@ -1,0 +1,29 @@
+$lopes-color: #eb194b;
+$gray-text-color: #6f6f6f;
+
+.lead-card__icon {
+  font-size: 50px;
+  color: $lopes-color;
+}
+
+h3 {
+  display: flex;
+  color: $lopes-color;
+  font-weight: bold;
+
+  .skeleton__text,
+  .card__text {
+    margin-left: 5px;
+  }
+
+  .card__text {
+    color: $gray-text-color;
+    font-weight: 500;
+  }
+}
+
+.lead__price {
+  margin-left: 5px;
+  font-size: 14px;
+  color: $gray-text-color;
+}
