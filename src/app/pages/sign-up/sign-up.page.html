@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> 
+<ion-content>
   <form [formGroup]="signupForm" (ngSubmit)="signup()">
     <ion-item>
       <ion-label>Nome</ion-label>
@@ -43,6 +43,6 @@
         <ion-select-option value="Apartamento">Apartamento</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button expand="block"  type="submit" block>Cadastrar</ion-button>
+    <ion-button expand="block"  type="submit" block color="danger" style="margin-top: 40px;">Cadastrar</ion-button>
   </form>
 </ion-content>

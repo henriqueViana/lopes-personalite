@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LeadTabsPage } from './lead-tabs.page';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -11,28 +10,35 @@ const routes: Routes = [
     children: [
       {
         path: 'my-leads',
-        loadChildren: () => import('./my-leads/my-leads.module').then(m => m.MyLeadsPageModule)
+        loadChildren: () =>
+          import('./my-leads/my-leads.module').then((m) => m.MyLeadsPageModule),
       },
       {
         path: 'lead-list',
-        loadChildren: () => import('./lead-list/lead-list.module').then(m => m.LeadListPageModule)
+        loadChildren: () =>
+          import('./lead-list/lead-list.module').then(
+            (m) => m.LeadListPageModule
+          ),
       },
       {
         path: '',
         redirectTo: '/lead-tabs/lead-list',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path: 'my-leads',
-    loadChildren: () => import('./my-leads/my-leads.module').then( m => m.MyLeadsPageModule)
-  }
+    path: 'lead-detail',
+    loadChildren: () =>
+      import('./lead-detail/lead-detail.module').then(
+        (m) => m.LeadDetailPageModule
+      ),
+  },
 ];
 
 @NgModule({

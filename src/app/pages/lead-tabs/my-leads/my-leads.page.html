@@ -4,10 +4,14 @@
   </ion-toolbar>
   <ion-list>
     <div *ngIf="!leadList || leadList.length == 0; else leadsContent">
-      Você não possui leads
+      <ion-card style="height: 40px"> Você não possui leads </ion-card>
     </div>
     <ng-container #leadsContent *ngFor="let lead of leadList">
-      <app-lead-card [data]="lead"></app-lead-card>
+      <app-lead-card
+        [data]="lead"
+        [isMyLeads]="true"
+        (clickEvent)="cardClick($event, lead)"
+      ></app-lead-card>
     </ng-container>
   </ion-list>
 </ion-content>

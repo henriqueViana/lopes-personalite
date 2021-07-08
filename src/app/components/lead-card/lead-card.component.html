@@ -1,20 +1,18 @@
-<ion-card>
+<ion-card (click)="clickEvent.emit(true)">
   <ion-item>
     <ion-icon
       class="lead-card__icon"
-      name="{{data?.realStateType === 'house' ? 'home-outline' : 'business-outline'}}"
+      name="{{
+        data?.realStateType === 'house' ? 'home-outline' : 'business-outline'
+      }}"
       slot="start"
     ></ion-icon>
 
     <!-- Skeleton Text -->
-    <ion-label *ngIf="!data">
+    <ion-label *ngIf="data && !isMyLeads">
       <h3>
         Local:
-        <ion-skeleton-text
-          animated
-          class="skeleton__text"
-          style="width: 80%"
-        ></ion-skeleton-text>
+        <span class="card__text">{{ data.endereco }}</span>
       </h3>
       <h3>
         Nome:
@@ -22,6 +20,15 @@
           animated
           class="skeleton__text"
           style="width: 60%"
+        ></ion-skeleton-text>
+      </h3>
+
+      <h3>
+        E-mail:
+        <ion-skeleton-text
+          animated
+          class="skeleton__text"
+          style="width: 70%"
         ></ion-skeleton-text>
       </h3>
 
@@ -43,32 +50,39 @@
       </h3>
       <h3>
         Valor:
-        <span class="lead__price"> R$ 50,00</span>
+        <span class="lead__price">
+          {{ data?.price | currency: "BRL":true }}</span
+        >
       </h3>
     </ion-label>
     <!-- Skeleton Text End-->
 
-    <ion-label *ngIf="data">
+    <ion-label *ngIf="data && isMyLeads">
       <h3>
         Local:
-        <span class="card__text">{{data.endereco}}</span>
+        <span class="card__text">{{ data.endereco }}</span>
       </h3>
       <h3>
         Nome:
-        <span class="card__text">{{data.nome}}</span>
+        <span class="card__text">{{ data.nome }}</span>
+      </h3>
+
+      <h3>
+        E-mail:
+        <span class="card__text">{{ data.email }}</span>
       </h3>
 
       <h3>
         Área:
-        <span class="card__text">{{data.areaImovel}}</span>
+        <span class="card__text">{{ data.areaImovel }}</span>
       </h3>
       <h3>
         Quartos:
-        <span class="card__text">{{data.qtdQuartos}}</span>
+        <span class="card__text">{{ data.qtdQuartos }}</span>
       </h3>
       <h3 *ngIf="!data">
         Valor:
-        <span class="lead__price"> R$ {{data?.price}}</span>
+        <span class="lead__price"> R$ {{ data?.price }}</span>
       </h3>
     </ion-label>
   </ion-item>

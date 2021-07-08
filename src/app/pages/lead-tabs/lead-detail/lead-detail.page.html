@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes do Lead</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Skeleton Text -->
+  <ion-label *ngIf="data && !buyedLead">
+    <h3>
+      Endereço:
+      <span class="card__text">{{data.endereco}}</span>
+    </h3>
+
+    <h3>
+      Nome:
+      <ion-skeleton-text
+        animated
+        class="skeleton__text"
+        style="width: 60%"
+      ></ion-skeleton-text>
+    </h3>
+
+    <h3>
+      E-mail:
+      <ion-skeleton-text
+        animated
+        class="skeleton__text"
+        style="width: 80%"
+      ></ion-skeleton-text>
+    </h3>
+
+
+    <h3>
+      Telefone:
+      <ion-skeleton-text
+        animated
+        class="skeleton__text"
+        style="width: 30%"
+      ></ion-skeleton-text>
+    </h3>
+
+    <h3>
+      Tipo de Imóvel:
+      <span class="card__text">{{data.tipoImovel}}</span>
+    </h3>
+
+    <h3>
+      Área:
+      <span class="card__text">{{data.areaImovel}}</span>
+    </h3>
+
+    <h3>
+      Quartos:
+      <span class="card__text">{{data.qtdQuartos}}</span>
+    </h3>
+
+    <h3>
+      Valor:
+      <span class="lead__price"> {{ data?.price | currency: "BRL":true }}</span>
+    </h3>
+  </ion-label>
+
+  <ion-button
+    class="button"
+    color="danger"
+    expand="block"
+    block
+    (click)="reserveLead()"
+    *ngIf="!buyedLead"
+  >
+    <ion-spinner name="dots" *ngIf="isLoading"></ion-spinner>
+    <ng-container *ngIf="!isLoading">Comprar</ng-container>
+  </ion-button>
+  <!-- Skeleton Text End-->
+
+  <ion-label *ngIf="data && buyedLead">
+    <h3>
+      Endereço:
+      <span class="card__text">{{data.endereco}}</span>
+    </h3>
+    <h3>
+      Nome:
+      <span class="card__text">{{data.nome}}</span>
+    </h3>
+
+    <h3>
+      Telefone:
+      <span class="card__text">{{data.telefone}}</span>
+    </h3>
+
+    <h3>
+      E-mail:
+      <span class="card__text">{{data.email}}</span>
+    </h3>
+
+    <h3>
+      Tipo de Imóvel:
+      <span class="card__text">{{data.tipoImovel}}</span>
+    </h3>
+
+    <h3>
+      Área:
+      <span class="card__text">{{data.areaImovel}}</span>
+    </h3>
+    <h3>
+      Quartos:
+      <span class="card__text">{{data.qtdQuartos}}</span>
+    </h3>
+  </ion-label>
+
+  <div class="ion-text-center">
+    <img src="assets/images/whatsapp-icon.jpg" class="ion-padding whatsapp__link" (click)="openWhatsApp()"/>
+  </div>
+</ion-content>

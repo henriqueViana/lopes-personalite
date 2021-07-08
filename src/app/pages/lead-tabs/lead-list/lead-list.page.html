@@ -3,11 +3,11 @@
     <img src="assets/images/lopes-personnalite-logo.png" class="ion-padding" />
   </ion-toolbar>
   <ion-list>
-    <div *ngIf="!leadList || leadList.length == 0; else leadsContent">
+    <div *ngIf="!leadList || leadList.length === 0; else leadsContent">
       Você não possui leads
     </div>
     <ng-container #leadsContent *ngFor="let lead of leadList">
-      <app-lead-card [data]="lead"></app-lead-card>
+      <app-lead-card [data]="lead" (clickEvent)="cardClick($event, lead)"></app-lead-card>
     </ng-container>
   </ion-list>
 </ion-content>

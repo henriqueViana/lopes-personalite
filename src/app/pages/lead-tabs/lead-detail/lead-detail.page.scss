@@ -1,0 +1,15 @@
+$lopes-color: #eb194b;
+$gray-text-color: #6f6f6f;
+h3 {
+  padding-bottom: 20px;
+  font-weight: 700;
+
+  .card__text, .lead__price {
+    color: $gray-text-color;
+    font-weight: 500;
+  }
+}
+
+.whatsapp__link {
+  height: 150px;
+}
