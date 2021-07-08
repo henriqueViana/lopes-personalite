@@ -33,15 +33,11 @@ export class SignInPage implements OnInit {
   }
 
   login() {
-    this.loadingService.present()
-
     this.loginService.login(this.loginForm.value)
       .subscribe(res => { 
-        this.loadingService.dismiss()
         this.userService.setUser(res.data)
         this.router.navigate(['/lead-tabs'])
       }, err => {
-        this.loadingService.dismiss()
         this.alertService.alert('Login Inválido', 'Usuário e/ou senha incorretos')
         console.log(err)
       })

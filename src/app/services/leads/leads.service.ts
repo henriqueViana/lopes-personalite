@@ -9,7 +9,7 @@ import { ILeadsResponse } from 'src/app/interfaces/ILeadsResponse';
 })
 export class LeadsService {
 
-  private url: string = 'http://ec2-34-200-238-225.compute-1.amazonaws.com:8080/corretor/'
+  private url: string = 'http://ec2-34-200-238-225.compute-1.amazonaws.com:8080/'
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,14 @@ export class LeadsService {
       'Content-Type': 'application/json'
     })
 
-    return this.http.get<ILeadsResponse>(`${this.url}${idCorretor}/leads`, { headers })
+    return this.http.get<ILeadsResponse>(`${this.url}corretor/${idCorretor}/leads`, { headers })
+  }
+
+  public getLeadsToBuy(idCorretor): Observable<ILeadsResponse> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+
+    return this.http.get<ILeadsResponse>(`${this.url}lead/disponivel/regiao/${idCorretor}`, { headers })
   }
 }
